@@ -12,7 +12,6 @@ import ResponsiveImg from "../../components/ResponsiveImg/ResponsiveImg"
 import ResponsiveVideo from "../../components/VideoPlayer/ResponsiveVideo"
 import HeaderSlider from "./HeaderSlider"
 import SolucionesSlider from "./SolucionesSlider"
-import ProductosSlider from "./ProductosSlider"
 import PaquetePersonalizado from "../../components/PaquetePersonalizado/PaquetePersonalizado"
 //Data:
 import { dataPaquetes } from "../../components/PaquetePersonalizado/dataPaquetes"
@@ -32,6 +31,7 @@ import img5cell from '../../assets/home/varios/05_cell.mp4'
 import img5desk from '../../assets/home/varios/05_desk.jpg'
 import img6cell from '../../assets/home/varios/06_cell.jpg'
 import img6desk from '../../assets/home/varios/06_desk.jpg'
+import Productos from "./Productos"
 
 const Home = () => {
 
@@ -183,16 +183,8 @@ const Home = () => {
             </Grid>
 
             {/* PRODUCTOS */}
-            <Grid item xs={12} container justifyContent='center' gap={1}>
-                <Grid item xs={11}>
-                    <section id={routes.PRODUCTOS.section}/>
-                    <Typography sx={{fontSize: {xs:'16pt', md:'24pt'}, fontWeight:700}}>
-                        Adquirí Productos por Separado
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={10}>
-                    <ProductosSlider />
-                </Grid>
+            <Grid item xs={12}>
+                <Productos />
             </Grid>
 
             {/* MAS CUERPO */}

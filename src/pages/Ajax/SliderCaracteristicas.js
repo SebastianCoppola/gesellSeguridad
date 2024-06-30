@@ -9,17 +9,36 @@ import img5 from '../../assets/ajax/carouselCarateristicas/05.jpg'
 import img6 from '../../assets/ajax/carouselCarateristicas/06.jpg'
 import img7 from '../../assets/ajax/carouselCarateristicas/07.jpg'
 
+const Slide = ({ img }) => {
+    return (
+        <img 
+            src={img} 
+            alt='img' 
+            onClick={()=>{}} 
+            style={{
+                cursor:'pointer',
+                minWidth:'100%', width:'100%', maxWidth:'100%',
+                minHeight:'100%', height:'100%', maxHeight:'100%',
+            }}
+        />
+    )
+}
+
 const SliderCaracteristicas = () => {
     return (
-        <FullWidthSlider autoplay={true} interval={5000} data={[
-            {id: 1, img: img1, action: () => console.log(1)},
-            {id: 2, img: img2, action: () => console.log(1)},
-            {id: 3, img: img3, action: () => console.log(1)},
-            {id: 4, img: img4, action: () => console.log(1)},
-            {id: 5, img: img5, action: () => console.log(1)},
-            {id: 6, img: img6, action: () => console.log(1)},
-            {id: 7, img: img7, action: () => console.log(1)},
-        ]}/>
+        <FullWidthSlider 
+            autoplay={true} 
+            interval={5000} 
+            data={[
+                <Slide img={img1}/>,
+                <Slide img={img2}/>,
+                <Slide img={img3}/>,
+                <Slide img={img4}/>,
+                <Slide img={img5}/>,
+                <Slide img={img6}/>,
+                <Slide img={img7}/>,
+            ]}
+        />
     )
 }
 

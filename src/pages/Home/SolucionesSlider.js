@@ -18,21 +18,40 @@ import img7desk from '../../assets/home/carouselSoluciones/07_desk.jpg'
 //Mui:
 import { useMediaQuery, useTheme } from "@mui/material"
 
+const Slide = ({ img }) => {
+    return (
+        <img 
+            src={img} 
+            alt='img' 
+            onClick={()=>{}} 
+            style={{
+                cursor:'pointer',
+                minWidth:'100%', width:'100%', maxWidth:'100%',
+                minHeight:'100%', height:'100%', maxHeight:'100%',
+            }}
+        />
+    )
+}
+
 const SolucionesSlider = () => {
     
     const theme = useTheme()
     const isXs = useMediaQuery(theme.breakpoints.down('sm'))
 
     return (
-        <GhostImgCarousel autoplay={true} interval={5000} data={[
-            {id: 1, img: isXs ? img1cell : img1desk, action: () => console.log(1)},
-            {id: 2, img: isXs ? img2cell : img2desk, action: () => console.log(1)},
-            {id: 3, img: isXs ? img3cell : img3desk, action: () => console.log(1)},
-            {id: 4, img: isXs ? img4cell : img4desk, action: () => console.log(1)},
-            {id: 5, img: isXs ? img5cell : img5desk, action: () => console.log(1)},
-            {id: 6, img: isXs ? img6cell : img6desk, action: () => console.log(1)},
-            {id: 7, img: isXs ? img7cell : img7desk, action: () => console.log(1)},
-        ]}/>
+        <GhostImgCarousel 
+            autoplay={true} 
+            interval={5000} 
+            data={[
+                <Slide img={isXs ? img1cell : img1desk}/>,
+                <Slide img={isXs ? img2cell : img2desk}/>,
+                <Slide img={isXs ? img3cell : img3desk}/>,
+                <Slide img={isXs ? img4cell : img4desk}/>,
+                <Slide img={isXs ? img5cell : img5desk}/>,
+                <Slide img={isXs ? img6cell : img6desk}/>,
+                <Slide img={isXs ? img7cell : img7desk}/>,
+            ]}
+        />
     )
 }
 

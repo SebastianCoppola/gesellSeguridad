@@ -2,13 +2,28 @@ import React, { useEffect, useState } from 'react'
 //Mui:
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
 
-const FullWidthSlider = ({ data, autoplay, interval }) => {   
+
+const Slider = ({ data, autoplay, interval }) => {
 
     const [prevSlide, setPrevSlide] = useState(null)
     const [currentSlide, setCurrentSlide] = useState(data[0])
     const [nextSlide, setNextSlide] = useState(null)
     const [currentId, setCurrentId] = useState(data[0].id)
-    
+
+    //Swipeable Config:
+    let startX = 0
+    let endX = 0
+    let handleTouchStart = e => {
+        startX = e.changedTouches[0].screenX
+    }
+    let handleTouchEnd = e => {
+        endX = e.changedTouches[0].screenX
+        if (startX !== endX ) {
+            if (startX > endX) handleNext()
+            else handlePrev()
+        }
+    }
+
     useEffect(()=>{
         if(nextSlide) {
             setTimeout(()=>{
@@ -51,42 +66,21 @@ const FullWidthSlider = ({ data, autoplay, interval }) => {
     }, [autoplay, interval, currentSlide])
 
     return (
-        <div style={{
-            width: '100%',
-            minWidth: '100%',
-            maxWidth: '100%',
-            height: '100%',
-            minHeight: '100%',
-            maxHeight: '100%',
-            position: 'relative',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: prevSlide && 'flex-end'
-        }}>
+        <div 
+            onTouchStart={handleTouchStart} 
+            onTouchEnd={handleTouchEnd}
+            style={{
+                minWidth: '100%', width: '100%', maxWidth: '100%',
+                minHeight: '100%', height: '100%', maxHeight: '100%',
+                position: 'relative',
+                overflow: 'hidden',
+                display: 'flex',
+                justifyContent: prevSlide && 'flex-end'
+            }}
+        >
+            {/* SLIDES */}
             {prevSlide && (
-                <img
-                    key={prevSlide.id}
-                    src={prevSlide.img}
-                    alt='slide'
-                    style={{
-                        width: '100%',
-                        minWidth: '100%',
-                        maxWidth: '100%',
-                        height: '100%',
-                        minHeight: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                        cursor: 'pointer',
-                    }}
-                    onClick={prevSlide.action}
-                />
-            )}
-            <img
-                key={currentSlide.id}
-                src={currentSlide.img}
-                alt='slide'
-                style={{
+                <div style={{
                     width: '100%',
                     minWidth: '100%',
                     maxWidth: '100%',
@@ -95,43 +89,50 @@ const FullWidthSlider = ({ data, autoplay, interval }) => {
                     maxHeight: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
-                    cursor: 'pointer',
-                    ...(
-                        nextSlide ? {
-                            marginLeft: '-100%',
-                            transition: 'margin 0.5s',
-                            minHeight: '100%',
-                        } : prevSlide ? {
-                            marginRight: '-100%',
-                            transition: 'margin 0.5s',
-                            minHeight: '100%',
-                        } : {
-                            marginRight: '0px',
-                            marginLeft: '0px',
-                        }
-                    )
-                }}
-                onClick={currentSlide.action}
-            />
-            {nextSlide && (
-                <img
-                    key={nextSlide.id}
-                    src={nextSlide.img}
-                    alt='slide'
-                    style={{
-                        width: '100%',
-                        minWidth: '100%',
-                        maxWidth: '100%',
-                        height: '100%',
-                        minHeight: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                        cursor: 'pointer',
-                    }}
-                    onClick={nextSlide.action}
-                />
+                }}>
+                    {prevSlide.element}
+                </div>
             )}
+            <div style={{
+                width: '100%',
+                minWidth: '100%',
+                maxWidth: '100%',
+                height: '100%',
+                minHeight: '100%',
+                maxHeight: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                ...(nextSlide ? {
+                    marginLeft: '-100%',
+                    transition: 'margin 0.5s',
+                    minHeight: '100%',
+                } : prevSlide ? {
+                    marginRight: '-100%',
+                    transition: 'margin 0.5s',
+                    minHeight: '100%',
+                } : {
+                    marginRight: '0px',
+                    marginLeft: '0px',
+                })
+            }}>
+                {currentSlide.element}
+            </div>
+            {nextSlide && (
+                <div style={{
+                    width: '100%',
+                    minWidth: '100%',
+                    maxWidth: '100%',
+                    height: '100%',
+                    minHeight: '100%',
+                    maxHeight: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                }}>
+                    {nextSlide.element}
+                </div>
+            )}
+
+            {/* BUTTONS */}
             <div onClick={handlePrev} style={{
                 position: 'absolute',
                 bottom: '10px',
@@ -146,6 +147,8 @@ const FullWidthSlider = ({ data, autoplay, interval }) => {
                 color: 'white',
                 cursor: 'pointer',
             }}><ArrowForwardIos /></div>
+
+            {/* INDEX */}
             <div style={{
                 maxWidth:'100px',
                 position: 'absolute',
@@ -158,7 +161,7 @@ const FullWidthSlider = ({ data, autoplay, interval }) => {
             }}>
                 {data.map(it=>(
                     <div
-                        key={it.id} 
+                        key={it.id}
                         style={{
                             width:'10px',
                             height:'10px',
@@ -170,6 +173,19 @@ const FullWidthSlider = ({ data, autoplay, interval }) => {
                 ))}
             </div>
         </div>
+    )
+}
+
+const FullWidthSlider = ({ data, autoplay, interval }) => {
+
+    const dataSlider = data.map( ( it, index ) => { return { id: index + 1, element: it } } )
+
+    return dataSlider && (
+        <Slider
+            data={dataSlider}
+            autoplay={autoplay}
+            interval={interval}
+        />
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 //Mui:
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
 
-const GhostSlidesSlider = ({ data, autoplay, interval }) => {   
+const Slider = ({ data, autoplay, interval }) => {   
 
     const [prevSlide, setPrevSlide] = useState(null)
     const [currentNegative, setCurrentNegative] = useState(data[data.length - 1])
@@ -14,6 +14,20 @@ const GhostSlidesSlider = ({ data, autoplay, interval }) => {
     let opacity = '0.5'
     let transition = '0.5s'
     let timeout = 500
+
+    //Swipeable Config:
+    let startX = 0
+    let endX = 0
+    let handleTouchStart = e => {
+        startX = e.changedTouches[0].screenX
+    }
+    let handleTouchEnd = e => {
+        endX = e.changedTouches[0].screenX
+        if (startX !== endX ) {
+            if (startX > endX) handleNext()
+            else handlePrev()
+        }
+    }
     
     useEffect(()=>{
         if(nextSlide) {
@@ -67,15 +81,88 @@ const GhostSlidesSlider = ({ data, autoplay, interval }) => {
     }, [autoplay, interval, currentSlide])
 
     return (
-        <div style={{
-            width: '100%', minWidth: '100%', maxWidth: '100%',
-            height: '100%', minHeight: '100%', maxHeight: '100%',
-            position: 'relative',
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: prevSlide && 'flex-end',
-        }}>
+        <div 
+            onTouchStart={handleTouchStart} 
+            onTouchEnd={handleTouchEnd}
+            style={{
+                width: '100%', minWidth: '100%', maxWidth: '100%',
+                height: '100%', minHeight: '100%', maxHeight: '100%',
+                position: 'relative',
+                overflow: 'hidden',
+                display: 'flex',
+                justifyContent: prevSlide && 'flex-end',
+            }}
+        >
+            {/* SLIDES */}
             {prevSlide && (
+                <div style={{
+                    width: '80%', minWidth: '80%', maxWidth: '80%',
+                    height: '100%', minHeight: '100%', maxHeight: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    opacity: opacity
+                }}>
+                    {prevSlide.element}
+                </div>
+            )}
+            <div style={{
+                width: '80%', minWidth: '80%', maxWidth: '80%',
+                height: '100%', minHeight: '100%', maxHeight: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                opacity: opacity,
+                marginLeft: !prevSlide && '-70%',
+                ...(nextSlide ? {
+                    marginLeft: '-150%',
+                    transition: `margin ${transition}`,
+                } : prevSlide ? {
+                    opacity: '1',
+                    transition: `opacity ${transition} `,
+                } : {})
+            }}>
+                {currentNegative.element}
+            </div>
+            <div style={{
+                width: '80%', minWidth: '80%', maxWidth: '80%',
+                height: '100%', minHeight: '100%', maxHeight: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                ...((nextSlide || prevSlide) ? {
+                    opacity: opacity,
+                    transition: `opacity ${transition}`,
+                } : {})
+            }}>
+                {currentSlide.element}
+            </div>
+            <div style={{
+                width: '80%', minWidth: '80%', maxWidth: '80%',
+                height: '100%', minHeight: '100%', maxHeight: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                opacity: opacity,
+                marginRight: !nextSlide && '-70%',
+                ...(prevSlide ? {
+                    marginRight: '-150%',
+                    transition: `margin ${transition}`,
+                } : nextSlide ? {
+                    opacity: '1',
+                    transition: `opacity ${transition}`,
+                } : {})
+            }}>
+                {currentPositive.element}
+            </div>
+            {nextSlide && (
+                <div style={{
+                    width: '80%', minWidth: '80%', maxWidth: '80%',
+                    height: '100%', minHeight: '100%', maxHeight: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    opacity: opacity
+                }}>
+                    {nextSlide.element}
+                </div>
+            )}
+            {/* {prevSlide && (
                 <img
                     src={prevSlide.img}
                     alt='slide'
@@ -155,7 +242,9 @@ const GhostSlidesSlider = ({ data, autoplay, interval }) => {
                         opacity: opacity
                     }}
                 />
-            )}
+            )} */}
+
+            {/* CONTROLS */}
             <div onClick={handlePrev} style={{
                 position: 'absolute',
                 bottom: '10px',
@@ -170,6 +259,8 @@ const GhostSlidesSlider = ({ data, autoplay, interval }) => {
                 color: 'white',
                 cursor: 'pointer',
             }}><ArrowForwardIos /></div>
+            
+            {/* INDEX */}
             <div style={{
                 maxWidth:'100px',
                 position: 'absolute',
@@ -193,7 +284,21 @@ const GhostSlidesSlider = ({ data, autoplay, interval }) => {
                     }}></div>
                 ))}
             </div>
+
         </div>
+    )
+}
+
+const GhostSlidesSlider = ({ data, autoplay, interval }) => {
+
+    const dataSlider = data.map( ( it, index ) => { return { id: index + 1, element: it } } )
+
+    return dataSlider && (
+        <Slider
+            data={dataSlider}
+            autoplay={autoplay}
+            interval={interval}
+        />
     )
 }
 
