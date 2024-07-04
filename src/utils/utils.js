@@ -10,7 +10,6 @@ export const whatsApp = (message) => {
     window.open(url, '_blank')
 }
 
-
 export const sendMail = async (nombreApellido, email, telefono, mensaje) => {
     let serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID
     let templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
@@ -32,15 +31,15 @@ export const getColorByRoute = (rutaActual) => {
         routes.SOLUCIONES.children.SMART_PANICS.url,
         routes.SOLUCIONES.children.RISCO.url,
         routes.SOLUCIONES.children.AJAX.url,
-        routes.SOLUCIONES.children.CUSTODIAS.url,
         routes.SOLUCIONES.children.MONITOREO_FLOTA.url,
-        routes.SOLUCIONES.children.CUSTODIAS.url,
     ]
     let blackRoutes = [
+        routes.SOLUCIONES.children.CUSTODIAS.url,
         routes.EMPRESA.url,
         routes.CONTACTO.url,
         routes.TIPS.url,
-        routes.SOLUCIONES.children.SMART_HOME.url
+        routes.SOLUCIONES.children.SMART_HOME.url,
+        routes.SOLUCIONES.children.HELLGRUN.url,
     ]
     let color = whiteRoutes.includes(rutaActual) ? colors.white
         : blackRoutes.includes(rutaActual) ? colors.black

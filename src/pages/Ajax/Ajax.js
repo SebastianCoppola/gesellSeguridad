@@ -22,6 +22,7 @@ import desk_6 from "../../assets/ajax/06_desk.jpg"
 import desk_7 from "../../assets/ajax/07_desk.jpg"
 //Data:
 import { dataPaquetes } from "../../components/PaquetePersonalizado/dataPaquetes"
+import { seccionesNoMapeables } from "../../utils/routes"
 
 const Ajax = () => {
 
@@ -86,7 +87,8 @@ const Ajax = () => {
             <Grid item xs={12} md={0} sx={{display: {xs: 'block', md: 'none'}, paddingBottom:'15px'}}>
                 <SliderCaracteristicas />
             </Grid>
-            <Grid item xs={12} md={0} sx={{display: {xs: 'block', md: 'none'} }}>
+            <Grid item xs={12} md={0}>
+                <section id={seccionesNoMapeables.AJAX_VECINAL.section}/>
                 <PaquetePersonalizado 
                     title='Seguridad al alcance de todos'
                     text1='¿No encontrás el paquete que necesitas? '

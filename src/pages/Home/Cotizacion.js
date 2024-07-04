@@ -25,7 +25,7 @@ const Cotizacion = () => {
     }
 
     return (
-        <Grid container spacing={2} alignItems='center' gap={{xs: 2, md: 0}} sx={{
+        <Grid container alignItems='center' gap={{xs: 2, md: 0}} sx={{
             background: colors.lightOrange,
             padding: '20px 15px 20px 15px',
             borderRadius:'7px'

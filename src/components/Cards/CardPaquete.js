@@ -2,8 +2,6 @@
 import { Grid, Typography } from "@mui/material"
 //Utils:
 import { colors } from '../../utils/const'
-//Components:
-import CustomButon from "../CustomButton/CustomButton"
 
 const CardPaquete = ({ data, height, width }) => {
     return (
@@ -50,23 +48,26 @@ const CardPaquete = ({ data, height, width }) => {
                 </Grid>
                 {data.secondButtonLabel && (
                     <Grid>
-                        <CustomButon 
-                            label={data.secondButtonLabel}
-                            fontSize={{xs:'8pt',md:'10pt'}}
-                            onClick={data.secondButtonAction} 
-                            variant='contained'
-                            style={{borderRadius:'25px'}}
-                        />  
+                        <Typography sx={{
+                            fontSize: {xs:'8pt',md:'10pt'},
+                            borderRadius:'25px',
+                            background: colors.orange,
+                            fontWeight: 700, 
+                            color: colors.white, 
+                            padding: '5px 18px',
+                        }}>
+                            {data.secondButtonLabel}
+                        </Typography>
                     </Grid>
                 )}
             </Grid>
             <Grid container justifyContent='space-between'>
                 <Grid item>
-                    {data.price && (
+                    {/* {data.price && (
                         <Typography sx={{fontWeight:700, fontSize:{xs:'10pt', md:'12pt'}}}>
                             {data.price}
                         </Typography>
-                    )}
+                    )} */}
                 </Grid>
                 <Grid item>
                     {data.buttonLabel && (

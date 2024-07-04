@@ -1,11 +1,12 @@
 //Mui:
-import { Grid, Typography } from "@mui/material"
+import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material"
 //Utils:
 import { colors } from "../../utils/const"
+import { seccionesNoMapeables } from "../../utils/routes"
 //Observer:
 import { useInView } from "react-intersection-observer"
 //Components:
-import VideoPlayer from "../VideoPlayer/VideoPlayer"
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer"
 
 const DesktopCard = ({ data, index }) => {
 
@@ -132,27 +133,30 @@ const CellphoneCard = ({ data, index }) => {
 
 const MainBodyInfo = ({ data }) => {
 
+    const theme = useTheme()
+    const isXs = useMediaQuery(theme.breakpoints.down('sm'))
+
     return (
         <Grid container justifyContent='center'>
 
             {/* CELULAR */}
-            <Grid xs={11} md={0} sx={{display:{xs:'block', md:'none'}}}>
-                {data.map((it, index)=>(
-                    <>
-                        {it.section && <section id={it.section}/>}
-                        <CellphoneCard data={it} index={index}/>
-                    </>
-                ))}
+            <Grid item xs={11} md={0} sx={{display:{xs:'block', md:'none'}}}>
+                {isXs && <section id={seccionesNoMapeables.POR_QUE_LO_HACEMOS.section}/>}
+                <CellphoneCard data={data[0]} index={0}/>
+                <CellphoneCard data={data[1]} index={1}/>
+                <CellphoneCard data={data[2]} index={2}/>
+                {isXs && <section id={seccionesNoMapeables.NUESTRA_HISTORIA.section}/>}
+                <CellphoneCard data={data[3]} index={3}/>
             </Grid>
 
             {/* DESKTOP */}
-            <Grid xs={0} md={10} container sx={{display:{xs:'none', md:'block'}}}>
-                {data.map((it, index)=>(
-                    <>
-                        {it.section && <section id={it.section}/>}
-                        <DesktopCard data={it} index={index}/>
-                    </>
-                ))}
+            <Grid item xs={0} md={10} container sx={{display:{xs:'none', md:'block'}}}>
+                {!isXs && <section id={seccionesNoMapeables.POR_QUE_LO_HACEMOS.section}/>}
+                <DesktopCard data={data[0]} index={0}/>
+                <DesktopCard data={data[1]} index={1}/>
+                <DesktopCard data={data[2]} index={2}/>
+                {!isXs && <section id={seccionesNoMapeables.NUESTRA_HISTORIA.section}/>}
+                <DesktopCard data={data[3]} index={3}/>
             </Grid>
 
         </Grid>

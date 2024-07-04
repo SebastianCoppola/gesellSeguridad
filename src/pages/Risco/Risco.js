@@ -2,6 +2,7 @@
 import { Grid, Typography } from "@mui/material"
 //Utils:
 import { colors } from "../../utils/const"
+import { seccionesNoMapeables } from "../../utils/routes"
 //Components:
 import ResponsiveVideo from "../../components/VideoPlayer/ResponsiveVideo"
 import ResponsiveImg from "../../components/ResponsiveImg/ResponsiveImg"
@@ -93,7 +94,7 @@ const Risco = () => {
                         fontSize='10pt'
                         onClick={()=>{}}
                         variant='contained'
-                        style={null}
+                        style={{marginTop:'20px'}}
                     />
                 </Grid>
             </Grid>
@@ -144,6 +145,7 @@ const Risco = () => {
                 </Grid>
             </Grid>
             <Grid item xs={12}>
+                <section id={seccionesNoMapeables.RISCO_VECINAL.section}/>
                 <PaquetePersonalizado 
                     title='Nuestros Planes'                       
                     text1='¿No encontrás el paquete que necesitas? '

@@ -15,6 +15,7 @@ import Tips from './pages/Tips/Tips'
 import SmartPanicsFlota from './pages/SmartPanicsFlota/SmartPanicsFlota'
 import PersonalCustodias from './pages/PersonalCustodias/PersonalCustodias'
 import SmartHome from './pages/SmartHome/SmartHome'
+import Hellgrun from './pages/Hellgrun/Hellgrun'
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
                     <Route path='/risco' element={<Risco />} />
                     <Route path='/personal-custodias' element={<PersonalCustodias />} />
                     <Route path='/smart-home' element={<SmartHome />} />
+                    <Route path='/hellgrun' element={<Hellgrun />} />
                     <Route path='/empresa' element={<Empresa />} />
                     <Route path='/tips' element={<Tips />} />
                     <Route path='/*' element={<Home />} />

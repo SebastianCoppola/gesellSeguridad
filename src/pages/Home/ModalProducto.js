@@ -3,6 +3,8 @@ import { Dialog, Divider, Grid, IconButton, Typography } from "@mui/material"
 import { Close } from "@mui/icons-material"
 //Components:
 import CustomButon from "../../components/CustomButton/CustomButton"
+//Utils:
+import { whatsApp } from "../../utils/utils"
 
 const ModalProducto = ({ open, setOpen, data }) => {
 
@@ -44,7 +46,7 @@ const ModalProducto = ({ open, setOpen, data }) => {
                 <Grid item xs={12} container justifyContent='center' sx={{padding:'17px 0 10px 0'}}>
                     <CustomButon
                         variant='contained' 
-                        onClick={()=>{}}
+                        onClick={() => whatsApp()}
                         fontSize={{xs:'10pt', md:'13pt'}}
                         label={"MÁS INFORMACIÓN"}
                     />

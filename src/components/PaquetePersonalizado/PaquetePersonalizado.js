@@ -5,6 +5,7 @@ import CustomButon from "../CustomButton/CustomButton"
 import SliderPaquetes from "./SliderPaquetes"
 //Utils:
 import { colors } from "../../utils/const"
+import { whatsApp } from "../../utils/utils"
 
 
 const PaquetePersonalizado = ({ title, text1, text2, labelButton, paquetes }) => {
@@ -30,7 +31,7 @@ const PaquetePersonalizado = ({ title, text1, text2, labelButton, paquetes }) =>
                     <CustomButon 
                         label={labelButton}
                         fontSize='13pt'
-                        onClick={()=>console.log('hola!')}
+                        onClick={() => whatsApp()}
                         variant='contained'
                     />
                 </Grid>

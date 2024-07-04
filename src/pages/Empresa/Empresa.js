@@ -16,7 +16,7 @@ import img4 from '../../assets/empresa/04.jpg'
 import img5 from '../../assets/empresa/05.mp4'
 //Components:
 import VerticalCards from '../../components/VerticalCards/VerticalCards'
-import MainBodyInfo from '../../components/MainBodyInfo/MainBodyInfo'
+import MainBodyInfo from './MainBodyInfo'
 import Charlemos from './Charlemos'
 import Form from './Form'
 import ResponsiveImg from '../../components/ResponsiveImg/ResponsiveImg'

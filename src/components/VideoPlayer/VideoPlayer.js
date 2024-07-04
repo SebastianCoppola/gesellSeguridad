@@ -27,16 +27,19 @@ const VideoPlayer = ({ src, autoplay, videoStyle, hideControl, loop }) => {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            border: 'none !important',
+            backgroundColor: 'transparent !important',
         }}>
             <video 
                 ref={videoRef} 
                 style={{
-                    clipPath:'inset(1px 1px)', 
                     width:'100%', 
                     height:'100%', 
                     objectFit:'cover', 
                     objectPosition:'center', 
+                    position: 'relative',
+                    left: '1px',
                     ...videoStyle
                 }} 
                 onClick={togglePlay}

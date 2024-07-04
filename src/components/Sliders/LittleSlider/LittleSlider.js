@@ -214,7 +214,7 @@ const LittleSlider = ({ data, autoplay, interval }) => {
                 interval={interval}
             />  
         ) : data ? (
-            <div style={{   }}>
+            <div>
                 <div ref={ghostElement}>
                     {data[0]}
                 </div>

@@ -4,6 +4,7 @@ import { Check } from "@mui/icons-material"
 //Utils:
 import { colors } from "../../utils/const"
 import { routes } from "../../utils/routes"
+import { whatsApp } from "../../utils/utils"
 //Components:
 import VerticalCards from "../../components/VerticalCards/VerticalCards"
 import Cotizacion from "./Cotizacion"
@@ -13,6 +14,7 @@ import ResponsiveVideo from "../../components/VideoPlayer/ResponsiveVideo"
 import HeaderSlider from "./HeaderSlider"
 import SolucionesSlider from "./SolucionesSlider"
 import PaquetePersonalizado from "../../components/PaquetePersonalizado/PaquetePersonalizado"
+import Productos from "./Productos"
 //Data:
 import { dataPaquetes } from "../../components/PaquetePersonalizado/dataPaquetes"
 //Assets:
@@ -31,7 +33,6 @@ import img5cell from '../../assets/home/varios/05_cell.mp4'
 import img5desk from '../../assets/home/varios/05_desk.jpg'
 import img6cell from '../../assets/home/varios/06_cell.jpg'
 import img6desk from '../../assets/home/varios/06_desk.jpg'
-import Productos from "./Productos"
 
 const Home = () => {
 
@@ -42,7 +43,7 @@ const Home = () => {
     ]
 
     return (
-        <Grid container alignItems='flex-start' gap={5} sx={{marginBottom:'30px'}}>
+        <Grid container alignItems='flex-start' sx={{paddingBottom:'30px'}}>
             
             {/* MAIN CAROUSEL */}
             <Grid item xs={12} container alignItems='flex-end'>
@@ -50,7 +51,7 @@ const Home = () => {
             </Grid>
 
             {/* CUERPO */}
-            <Grid item xs={12} container justifyContent='center' alignItems='center' gap={2}>
+            <Grid item xs={12} container justifyContent='center' alignItems='center' gap={2} sx={{padding:'20px 0'}}>
                 <Typography sx={{
                     fontSize: {xs:'18pt', md:'34px'}, 
                     fontWeight: 700, 
@@ -60,12 +61,12 @@ const Home = () => {
                     Cotizá tu alarma sin cargo en el día
                 </Typography>
                 <CustomButon 
-                    onClick={()=>{}}
+                    onClick={() => whatsApp()}
                     label='COMENZAR'
                     variant='outlined'
                 />
             </Grid>
-            <Grid item xs={12} container justifyContent='center'>
+            <Grid item xs={12} container justifyContent='center' sx={{padding:'20px 0'}}>
                 <VerticalCards data={cardsData}/>
             </Grid>
             <Grid item xs={12} container gap={1}>
@@ -78,7 +79,7 @@ const Home = () => {
                     <CustomButon 
                         label='MÁS INFORMACIÓN' 
                         fontSize='8pt' 
-                        onClick={()=>{}}
+                        onClick={() => whatsApp()}
                         variant='contained'
                     />
                 </Grid>
@@ -102,14 +103,14 @@ const Home = () => {
                             <CustomButon 
                                 label='MÁS INFORMACIÓN' 
                                 fontSize='13pt' 
-                                onClick={()=>{}}
+                                onClick={() => whatsApp()}
                                 variant='contained'
                             />
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent='center'>
+            <Grid item xs={12} container justifyContent='center' sx={{padding:'20px 0'}}>
                 <Grid item xs={12} md={10}>
                     <Cotizacion />
                 </Grid>
@@ -124,7 +125,7 @@ const Home = () => {
                     <CustomButon 
                         label='MÁS INFORMACIÓN' 
                         fontSize='12pt' 
-                        onClick={()=>{}}
+                        onClick={() => whatsApp()}
                         variant='contained'
                     />
                 </Grid>
@@ -134,7 +135,7 @@ const Home = () => {
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat', 
                         backgroundPosition: 'center', 
-                        height: '400px',
+                        height: '500px',
                         width: 'auto'
                     }}>
                         <Grid item xs={5} container gap={3}>
@@ -161,7 +162,7 @@ const Home = () => {
                             <CustomButon 
                                 label='MÁS INFORMACIÓN' 
                                 fontSize='13pt' 
-                                onClick={()=>{}}
+                                onClick={() => whatsApp()}
                                 variant='contained'
                             />
                         </Grid>
@@ -170,7 +171,7 @@ const Home = () => {
             </Grid>
 
             {/* SOLUCIONES */}
-            <Grid item xs={12} container justifyContent='center' gap={2}>
+            <Grid item xs={12} container justifyContent='center' gap={2} sx={{padding:'20px 0'}}>
                 <Grid item xs={11}>
                     <section id={routes.SOLUCIONES.section} />
                     <Typography sx={{fontSize: {xs:'16pt', md:'24pt'}, fontWeight:700}}>
@@ -240,7 +241,7 @@ const Home = () => {
             </Grid>
 
             {/* PAQUETES */}
-            <Grid item xs={12} container justifyContent='center' gap={1}>
+            <Grid item xs={12} container justifyContent='center'>
                 <section id={routes.PAQUETES.section}/>
                 <PaquetePersonalizado 
                     title='Seguridad al alcance de todos'
@@ -271,8 +272,9 @@ const Home = () => {
                     <CustomButon 
                         label='COMENZAR' 
                         fontSize='12pt' 
-                        onClick={()=>{}}
+                        onClick={() => whatsApp()}
                         variant='contained'
+                        style={{marginTop:'20px'}}
                     />
                 </Grid>
                 <Grid item xs={0} md={12} sx={{display:{xs:'none', md:'block'}}}>
@@ -281,7 +283,7 @@ const Home = () => {
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat', 
                         backgroundPosition: 'center', 
-                        height: '700px',
+                        height: '750px',
                         width: 'auto',
                         padding: '50px 50px'
                     }}>
@@ -310,7 +312,7 @@ const Home = () => {
                                 <CustomButon 
                                     label='MÁS INFORMACIÓN' 
                                     fontSize='13pt' 
-                                    onClick={()=>{}}
+                                    onClick={() => whatsApp()}
                                     variant='contained'
                                 />
                             </Grid>
@@ -318,7 +320,7 @@ const Home = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent='center'>
+            <Grid item xs={12} container justifyContent='center' sx={{padding:'30px 0'}}>
                 <Grid item xs={12} md={0} sx={{display:{xs:'block', md:'none'}, textAlign:'center'}}>
                     <ResponsiveImg 
                         imgCell={img6cell}
@@ -328,13 +330,14 @@ const Home = () => {
                     <CustomButon 
                         label='COMENZAR' 
                         fontSize='12pt' 
-                        onClick={()=>{}}
+                        onClick={() => whatsApp()}
                         variant='contained'
+                        style={{marginTop:'20px'}}
                     />
                 </Grid>
                 <Grid item xs={0} md={12} sx={{display:{xs:'none', md:'block'}}}>
                     <Grid container justifyContent='center' alignItems='center'>
-                        <Grid item xs={5.2} container gap={3} pl={5}>
+                        <Grid item xs={5.5} container gap={3} pl={5}>
                             <Grid item xs={12}>
                                 <Typography sx={{fontWeight:700, fontSize:'24pt'}}>
                                     Tu seguridad y la de tu familia <br/> a 3 simples pasos
@@ -357,11 +360,11 @@ const Home = () => {
                             <CustomButon 
                                 label='COMENZAR' 
                                 fontSize='13pt' 
-                                onClick={()=>{}}
+                                onClick={() => whatsApp()}
                                 variant='contained'
                             />
                         </Grid>
-                        <Grid item xs={5.2} container sx={{height:'500px'}}>
+                        <Grid item xs={4} container sx={{height:'500px'}}>
                             <img src={img6desk} alt='banner' style={{height:'100%'}}/>
                         </Grid>
                     </Grid>

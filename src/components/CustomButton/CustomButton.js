@@ -6,7 +6,7 @@ import { colors, buttonVariant } from "../../utils/const"
 
 const CustomButon = (props) => {
     
-    const { label, fontSize, onClick, variant, style } = props
+    const { label, fontSize, onClick, variant, style, blackContrast } = props
     
     const getButtonStyle = () => {
         switch(variant){
@@ -21,7 +21,7 @@ const CustomButon = (props) => {
                     padding: '5px 18px',
                     ':hover':{
                         background: colors.orange,
-                        boxShadow:`4px 4px 6px ${colors.greyClaro}`
+                        boxShadow: blackContrast ? `1px 1px 5px ${colors.grey}` : `4px 4px 6px ${colors.greyClaro}`
                     }
                 }
             case buttonVariant.outlined:
@@ -35,7 +35,7 @@ const CustomButon = (props) => {
                     padding: '5px 18px',
                     ':hover':{
                         background: colors.transparent,
-                        boxShadow:`4px 4px 6px ${colors.greyClaro}`
+                        boxShadow: blackContrast ? `1px 1px 5px ${colors.grey}` : `4px 4px 6px ${colors.greyClaro}`
                     }
                 }
             default:

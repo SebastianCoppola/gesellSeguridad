@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material"
 import { KeyboardArrowDown, LocalPhone, LocalPostOffice, LocationOn, WhatsApp } from "@mui/icons-material"
 //Utils:
 import { colors } from "../../utils/const"
-import { routes } from "../../utils/routes"
+import { routes, seccionesNoMapeables } from "../../utils/routes"
 //React Icons:
 import { IoLogoFacebook } from "react-icons/io"
 import { FaWhatsapp } from "react-icons/fa"
@@ -20,10 +20,10 @@ const Icons = () => {
 
     return (
         <>
-            <IoLogoFacebook style={{color:colors.white}} fontSize='25px' onClick={()=>nav('https://www.facebook.com/GesellSeguridad/')}/>
-            <FaWhatsapp style={{color:colors.white}} fontSize='25px' onClick={()=>whatsApp()}/>
-            <FaInstagram style={{color:colors.white}} fontSize='25px' onClick={()=>nav('https://www.instagram.com/gesellseg')}/>
-            <FaYoutube style={{color:colors.white}} fontSize='25px' onClick={()=>{}}/>
+            <IoLogoFacebook style={{color:colors.white, cursor:'pointer'}} fontSize='25px' onClick={()=>nav('https://www.facebook.com/GesellSeguridad/')}/>
+            <FaWhatsapp style={{color:colors.white, cursor:'pointer'}} fontSize='25px' onClick={()=>whatsApp()}/>
+            <FaInstagram style={{color:colors.white, cursor:'pointer'}} fontSize='25px' onClick={()=>nav('https://www.instagram.com/gesellseg')}/>
+            <FaYoutube style={{color:colors.white, cursor:'pointer'}} fontSize='25px' onClick={()=>{}}/>
         </>
     )
 }
@@ -107,6 +107,7 @@ const Footer = () => {
             color: colors.white,
             fontSize: '11pt',
             marginBottom: '20px',
+            fontWeight: 700
         },
         links:{
             color: colors.white,
@@ -163,8 +164,8 @@ const Footer = () => {
                         title='Empresa'
                         items={[
                             {text: 'Qué Hacemos', action: () => handleNavigate(routes.EMPRESA.url, routes.EMPRESA.section)},
-                            {text: 'Por qué lo Hacemos', action: () => handleNavigate(routes.EMPRESA.url, 'porQueLoHacemos')},
-                            {text: 'Nuestra Historia', action: () => handleNavigate(routes.EMPRESA.url, 'nuestraHistoria')},
+                            {text: 'Por qué lo Hacemos', action: () => handleNavigate(seccionesNoMapeables.POR_QUE_LO_HACEMOS.url, seccionesNoMapeables.POR_QUE_LO_HACEMOS.section)},
+                            {text: 'Nuestra Historia', action: () => handleNavigate(seccionesNoMapeables.NUESTRA_HISTORIA.url, seccionesNoMapeables.NUESTRA_HISTORIA.section)},
                             {text: 'Contacto', action: () => handleNavigate(routes.CONTACTO.url, routes.CONTACTO.section)},
                         ]}
                         style={mobileStyles.links}
@@ -209,27 +210,27 @@ const Footer = () => {
                         <Typography sx={desktopStyles.title}>Soluciones para tu Hogar</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.AJAX.url, routes.SOLUCIONES.children.AJAX.section)}>Alarma Ajax</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.RISCO.url, routes.SOLUCIONES.children.RISCO.section)}>Alarma Risco</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>{}}>Accesorios de Seguridad</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.PRODUCTOS.url, routes.PRODUCTOS.section)}>Accesorios de Seguridad</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.SMART_PANICS.url, routes.SOLUCIONES.children.SMART_PANICS.section)}>Smart Panics App</Typography>
                     </Grid>
                     <Grid item xs={2.25}>
-                        <Typography sx={desktopStyles.title} onClick={()=>{}}>Soluciones Vecinales</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>{}}>Alarma Ajax Vecinal</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>{}}>Alarma Risco Vecinal</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>{}}>Recorridos Preventivos</Typography>
+                        <Typography sx={desktopStyles.title}>Soluciones Vecinales</Typography>
+                        <Typography sx={desktopStyles.links}  onClick={()=>handleNavigate(seccionesNoMapeables.AJAX_VECINAL.url, seccionesNoMapeables.AJAX_VECINAL.section)}>Alarma Ajax Vecinal</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(seccionesNoMapeables.RISCO_VECINAL.url, seccionesNoMapeables.RISCO_VECINAL.section)}>Alarma Risco Vecinal</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(seccionesNoMapeables.RECORRIDO_PREVENTIVOS.url, seccionesNoMapeables.RECORRIDO_PREVENTIVOS.section)}>Recorridos Preventivos</Typography>
                     </Grid>
                     <Grid item xs={2.5}>
                         <Typography sx={desktopStyles.title} >Soluciones para tu Comercio</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.AJAX.url, routes.SOLUCIONES.children.AJAX.section)}>Alarma Ajax</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.RISCO.url, routes.SOLUCIONES.children.RISCO.section)}>Alarma Risco</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.SOLUCIONES.children.PERSONAR_DE_SEGURIDAD.url, routes.SOLUCIONES.children.PERSONAR_DE_SEGURIDAD.section)}>Personal de Seguridad</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>{}}>Recorridos Preventivos</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(seccionesNoMapeables.RECORRIDO_PREVENTIVOS.url, seccionesNoMapeables.RECORRIDO_PREVENTIVOS.section)}>Recorridos Preventivos</Typography>
                     </Grid>
                     <Grid item xs={2}>
                         <Typography sx={desktopStyles.title}>Empresa</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.EMPRESA.url, routes.EMPRESA.section)}>Qué Hacemos</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.EMPRESA.url, 'porQueLoHacemos')}>Por qué lo Hacemos</Typography>
-                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.EMPRESA.url, 'nuestraHistoria')}>Nuestra Historia</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(seccionesNoMapeables.POR_QUE_LO_HACEMOS.url, seccionesNoMapeables.POR_QUE_LO_HACEMOS.section)}>Por qué lo Hacemos</Typography>
+                        <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(seccionesNoMapeables.NUESTRA_HISTORIA.url, seccionesNoMapeables.NUESTRA_HISTORIA.section)}>Nuestra Historia</Typography>
                         <Typography sx={desktopStyles.links} onClick={()=>handleNavigate(routes.CONTACTO.url, routes.CONTACTO.section)}>Contacto</Typography>
                     </Grid>
                     <Grid item xs={3}>
@@ -255,11 +256,13 @@ const Footer = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid container justifyContent='space-between' sx={{marginTop:'30px'}}>
-                    <Typography sx={{color: colors.white, fontSize: '8pt'}}>
-                        Copyright © 2024 Gesell Seguridad S.A. Todos los derechos reservados.
-                    </Typography>
-                    <Grid sx={{display:'flex', gap:'15px'}}>
+                <Grid container sx={{marginTop:'30px'}}>
+                    <Grid item xs={9}>
+                        <Typography sx={{color: colors.white, fontSize: '8pt'}}>
+                            Copyright © 2024 Gesell Seguridad S.A. Todos los derechos reservados.
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={3} sx={{display:'flex', justifyContent:'center', gap:'15px'}}>
                         <Icons />
                     </Grid>
                 </Grid>

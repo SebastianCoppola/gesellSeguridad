@@ -1,7 +1,7 @@
 //Mui:
 import { Grid } from "@mui/material"
 //Utils:
-import { routes } from "../../utils/routes"
+import { routes, seccionesNoMapeables } from "../../utils/routes"
 //Components:
 import ResponsiveImg from "../../components/ResponsiveImg/ResponsiveImg"
 import PaquetePersonalizado from "../../components/PaquetePersonalizado/PaquetePersonalizado"
@@ -36,6 +36,7 @@ const PersonalCustodias = () => {
                 />                
             </Grid>
             <Grid item xs={12}>
+                <section id={seccionesNoMapeables.RECORRIDO_PREVENTIVOS.section}/>
                 <PaquetePersonalizado 
                     title='Nuestros Planes'                       
                     text1='¿No encontrás el paquete que necesitas? '

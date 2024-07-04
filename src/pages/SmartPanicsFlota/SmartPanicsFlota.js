@@ -80,7 +80,7 @@ const SmartPanicsFlota = () => {
                         fontSize={{xs:'10pt', md:'16pt'}}
                         onClick={()=>{}}
                         variant='contained'
-                        style={null}
+                        blackContrast={true}
                     />
                 </Grid>
                 <Grid item xs={12} mt={4}>
@@ -188,6 +188,7 @@ const SmartPanicsFlota = () => {
                                     fontSize={{xs:'10pt', md:'16pt'}}
                                     onClick={()=>{}}
                                     variant='contained'
+                                    blackContrast={true}
                                 />
                             </Grid>
                         </Grid>
